@@ -1,0 +1,147 @@
+
+/* 
+    Created on : May 2, 2024, 4:35:28 PM
+    Author     : jeff
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background: #cccccc;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 400px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.brand {
+    width: 51%;
+    height: 80%;
+    margin-top: 40px;
+    margin-left: 20px;
+    padding: 0;
+    background-image: url(../Images/bndsl.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px 0 0 10px;
+    background-color: transparent;
+}
+
+.login-form {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    background-color: transparent;
+}
+
+.mt-5 {
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.ui-button {
+    margin-top: 20px !important;
+    
+}
+
+.entry {
+    margin-top: 10px;
+    height: 25px;
+    border-width: 1px;
+}
+
+.header {
+    background-color: #585856; 
+    background-image: url(../Images/books.jpg) ;
+    color: white;
+    padding: 10px; 
+    width: 100%;
+    box-sizing: border-box; 
+    text-align: center;  
+    display: flex;
+    justify-content: space-between; /* Aligns items with space between */
+    align-items: center;
+}
+
+.imge{
+    max-width: 50px; 
+}
+
+.salir{
+    background: #ed2234;
+}
+
+.sidemenu {
+    width: 200px; /* Adjust the width of the side menu */
+    background-color: #f8f9fa; /* Change the color as per your preference */
+    padding: 10px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    height: 100vh;
+    position: relative;
+    left: -175px;
+}
+.sidemenu2 {
+    width: 200px; /* Adjust the width of the side menu */
+    background-color: #f8f9fa; /* Change the color as per your preference */
+    padding: 10px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    height: 80vh;
+}
+
+.sidemenu:hover {
+    width: 200px; /* Adjust the width of the side menu */
+    background-color: #f8f9fa; /* Change the color as per your preference */
+    padding: 10px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    height: 100vh;
+    position: relative;
+    left: 0px;
+}
+/* CSS for the menu items */
+.menu-item {
+    padding: 5px 10px; /* Adjust padding as needed */
+    margin-bottom: 5px; /* Adjust margin as needed */
+    background-color: #ffffff; /* Change the color as per your preference */
+    border: 1px solid #ced4da; /* Change the border color as per your preference */
+    border-radius: 5px; /* Adjust border radius as needed */
+    text-decoration: none;
+    color: #000000; /* Change text color as per your preference */
+    text-align: center;
+}
+
+.tablausu {
+    padding-top: 50px;
+    margin-left: 25%;
+    width: 80%;
+        
+}

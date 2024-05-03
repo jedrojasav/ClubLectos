@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link rel="stylesheet" href="./Style/Logueo.css"/>
+        <title>Blogs</title>
+    </h:head>
+    <h:body>
+        <div class="header">
+                <h:graphicImage value="../Images/blog.png" class="imge" alt="Leftimg" />
+                <h1><p:outputLabel style="font-size: 1.5em; background-color: #3d3d3d;" value="Club de lectura BANDESAL"></p:outputLabel></h1>
+                <h:graphicImage value="../Images/bndsl.png" class="imge" alt="rightimg" />
+        </div>
+        
+        <h:form id="myform" >
+            <p:growl id="growl" showDetail="true"/>
+            <div style="position: relative">
+                <div  class="sidemenu2" style="float: left">
+                    <p:commandButton onclick="PF('wdialogoagregar').show();" update="growl"    value="Agregar"/>
+                    <p:commandButton action="#{blogsBean.editarblog()}" update="growl dialogoeditar"    value="Editar"/>
+                    <p:commandButton action="#{blogsBean.eliminarblog()}" update="growl dialogoconf"   value="Eliminar"/>
+                    <p:commandButton action="#{blogsBean.redireccionarBlogs()}" update="growl"  value="VER BLOG"/>
+                    <p:commandButton class="salir" action="#{master.redireccionarHome()}" value="Home"/>
+
+                </div>
+            
+                <div style="width: 80%">
+                    <p:dataTable value="#{blogsBean.blogs}" var="u" class="tablausu">
+                        <p:column headerText="Seleccionar">
+                            <h:selectBooleanCheckbox value="#{u.seleccionado}"/>
+                        </p:column>
+
+                        <p:column headerText="ID blog">
+                            <h:outputText value="#{u.id}"/>
+                        </p:column>
+                        <p:column headerText="Título">
+                            <h:outputText value="#{u.title}"/>
+                        </p:column>
+                        <p:column headerText="Descripción">
+                            <h:outputText value="#{u.description}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                
+            </div>
+             
+            
+                        
+        </h:form>
+        
+         <p:dialog  id="dialogoconf" widgetVar="wdialogoconf" showHeader="false" modal="true" resizable="false" appendTo="@(body)" style="background:rgb(222,242,255)">
+               
+                <h:form id="form3" style="width: 350px">
+                    <p:growl id="growl" showDetail="true" life="5000"/>
+
+                    <h:outputText value="¿Está seguro que desea eliminar el registro?" style="color: #045FB4; font-family: tahoma; font-size: 14px;margin-left: 25px;" />
+                    <br></br>
+                    <h:panelGrid columns="1" style="align-items: flex-start">
+                    
+                        
+                        <h:panelGrid columns="2" style="align-items: flex-start">
+                         <p:commandButton id="guardar" update="growl myform" value="CONFIRMAR"  title ="" oncomplete="PF('wdialogoconf').hide();" action ="#{blogsBean.eliminar()}" 
+                                       style="margin-left: 20px; width: 150px; font-family: Century Gothic; font-size: 10px; background-color: rgb(0,184,193);background: rgb(0,184,193); color: white; height: 30px"/>
+                         
+                          <p:commandButton id="cancelar" update="growl myform" value="Cancelar"  title ="" oncomplete="PF('wdialogoconf').hide();" 
+                                       style="margin-left: 10px; width: 150px; font-family: Century Gothic; font-size: 10px; background-color: rgb(0,184,193);background: rgb(0,184,193); color: white; height: 30px"/>
+                        </h:panelGrid>
+                        
+                        </h:panelGrid>
+                    
+                </h:form>
+
+
+            </p:dialog>
+        
+        <p:dialog  id="dialogoagregar" widgetVar="wdialogoagregar" showHeader="false" modal="true" resizable="false" appendTo="@(body)" style="background:rgb(222,242,255)">
+               
+                <h:form id="form4" style="width: 350px">
+                    <p:growl id="growl" showDetail="true" life="5000"/>
+
+                    <h:outputText value="Agregar blog" style="color: #045FB4; font-family: tahoma; font-size: 14px;margin-left: 75px;" />
+                    <br></br>
+                    <h:panelGrid columns="1" style="align-items: flex-start">
+                        
+                        <p:inputText value="######" disabled="true" style="width: 250px;margin-left: 30px;" placeholder="id blog">
+                        </p:inputText>
+                        <p:inputText value="#{blogsBean.title}" style="width: 250px;margin-left: 30px;" placeholder="titulo">
+                        </p:inputText>
+                        <p:inputText value="#{blogsBean.description}" style="width: 250px;margin-left: 30px;" placeholder="Descripción">
+                        </p:inputText>
+                        
+                        
+                        <h:panelGrid columns="2" style="align-items: flex-start">
+                         <p:commandButton id="guardar" update="growl myform" value="Confirmar"  title ="" oncomplete="PF('wdialogoagregar').hide();" action ="#{blogsBean.agregar()}" 
+                                       style="margin-left: 20px; width: 150px; font-family: Century Gothic; font-size: 10px; background-color: rgb(0,184,193);background: rgb(0,184,193); color: white; height: 30px"/>
+                         
+                          <p:commandButton id="cancelar" update="growl myform" value="Cancelar"  title ="" oncomplete="PF('wdialogoagregar').hide();" 
+                                       style="margin-left: 10px; width: 150px; font-family: Century Gothic; font-size: 10px; background-color: rgb(0,184,193);background: rgb(0,184,193); color: white; height: 30px"/>
+                        </h:panelGrid>
+                        
+                        </h:panelGrid>
+                    
+                </h:form>
+            </p:dialog>
+        
+        <p:dialog  id="dialogoeditar" widgetVar="wdialogoeditar" showHeader="false" modal="true" resizable="false" appendTo="@(body)" >
+               
+                <h:form id="form5" style="width: 350px">
+                    <p:growl id="growl" showDetail="true" life="5000"/>
+
+                    <h:outputText value="EDITAR BLOG" style="color: #045FB4; font-size: 14px;margin-left: 75px;" />
+                    <br></br>
+                    <h:panelGrid columns="1" style="align-items: flex-start">
+                        
+                         <p:inputText value="#{blogsBean.idblog}" disabled="true" style="width: 250px;margin-left: 30px;" placeholder="id blog">
+                        </p:inputText>
+                        
+                        <p:inputText value="#{blogsBean.title}" style="width: 250px;margin-left: 30px;" placeholder="titulo">
+                        </p:inputText>
+                        <p:inputText value="#{blogsBean.description}" style="width: 250px;margin-left: 30px;" placeholder="Descripción">
+                        </p:inputText>
+                        
+                        
+                        <h:panelGrid columns="2" style="align-items: flex-start">
+                         <p:commandButton id="guardar" update="growl myform" value="EDITAR"  title ="" oncomplete="PF('wdialogoeditar').hide();" action ="#{blogsBean.editar()}" 
+                                       style="margin-left: 20px; width: 150px; font-family: Century Gothic; font-size: 10px; background-color: rgb(0,184,193);background: rgb(0,184,193); color: white; height: 30px"/>
+                         
+                          <p:commandButton id="cancelar" update="growl myform" value="Cancelar"  title ="" oncomplete="PF('wdialogoeditar').hide();" 
+                                       style="margin-left: 10px; width: 150px; font-family: Century Gothic; font-size: 10px; background-color: rgb(0,184,193);background: rgb(0,184,193); color: white; height: 30px"/>
+                        </h:panelGrid>
+                        
+                        </h:panelGrid>
+                    
+                </h:form>
+            </p:dialog>
+        
+
+    </h:body>
+</html>
+
